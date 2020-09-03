@@ -5,13 +5,13 @@
  
 MPU6050 mpu; //defines the chip as a MPU so I can call it later
  
-int16_t ax, ay, az;  // x y z orientation values from accelerometer. Only used dirtying flight. 
+int16_t ax, ay, az;  // x y z orientation values from accelerometer. Only used during flight. 
 int16_t gx, gy, gz;  // x y z orientation values from gyrscope
 /////////////////////////////////////////////////////////////////////////////////////// 
 Servo outer; 
 Servo inner;
 ///////////////////////////////////////////////////////////////////////////////////////
-Defining variables for outer and inner
+//// Defining variables for outer and inner
 int valo;     // outer val
 int prevValo; // outer prev val
 ///////////////////////////////////////////////////////////////////////////////////////
