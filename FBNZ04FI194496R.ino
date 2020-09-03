@@ -1,16 +1,17 @@
 #include "Wire.h"       // allows communication to i2c devices connected to arduino
-#include "I2Cdev.h"     // I2Connection library (communication to serial port)
+#include "I2Cdev.h"     // I2Connection library
 #include "MPU6050.h"    // IMU library
 #include "Servo.h"      // servo control library
  
-MPU6050 mpu; //defines the chip as a MPU so it can be called in the future
+MPU6050 mpu; //defines the chip as a MPU so I can call it later
  
-int16_t ax, ay, az;  // x y z orientation values from accelerometer
+int16_t ax, ay, az;  // x y z orientation values from accelerometer. Only used dirtying flight. 
 int16_t gx, gy, gz;  // x y z orientation values from gyrscope
 /////////////////////////////////////////////////////////////////////////////////////// 
 Servo outer; 
 Servo inner;
 ///////////////////////////////////////////////////////////////////////////////////////
+Defining variables for outer and inner
 int valo;     // outer val
 int prevValo; // outer prev val
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -23,12 +24,15 @@ void setup()
     Wire.begin(); 
     Serial.begin(38400); 
  
-    Serial.println("Initialize MPU");
+    Serial.println("MPU initialized"); 
     mpu.initialize();
     Serial.println(mpu.testConnection() ? "Connected" : "Connection failed"); 
-    outer.attach(9); //servo on pin 9 for large ring y
-    inner.attach(10);//servo on pin 10 for small ring x
+    outer.attach(9); //servo on pin 9 for  y
+    inner.attach(10);//servo on pin 10 for  x
 }
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////// 
 void loop() 
 {
